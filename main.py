@@ -8,7 +8,7 @@ FG_COLOR = "#ffa0ff"
 
 # setup
 root = Tk()
-root.title("Password Manager")
+root.title("MyPass Password Manager")
 root.config(bg=BG_COLOR, padx=20, pady=20)
 
 # # background
@@ -26,7 +26,7 @@ canvas.create_image(100, 100, anchor=CENTER, image=logo)
 
 
 # Labels
-web_label = Label(text="Website:")
+web_label = Label(text="Website:", height=2)
 web_label.config(anchor="e", fg=FG_COLOR, bg=BG_COLOR, font=("times, serif", 18, ), )
 web_label.grid(row=1, column=0)
 
@@ -40,11 +40,11 @@ pass_label.config(fg=FG_COLOR, bg=BG_COLOR, font=("times, serif", 18, ))
 
 
 # Entries
-web_entry = Entry(width=35, bg=BG_COLOR, fg=FG_COLOR, font=("times, serif", 18, ))
+web_entry = Entry(width=35, fg=BG_COLOR, font=("times, serif", 18, ))
 web_entry.grid(row=1, column=1)
 email_entry =  Entry(width=35, fg=BG_COLOR, font=("times, serif", 18, ))
 email_entry.grid(row=2, column=1)
-pass_entry = Entry(width=21, bg=BG_COLOR, fg=FG_COLOR, font=("times, serif", 18, ))
+pass_entry = Entry(width=21, fg=BG_COLOR, font=("times, serif", 18, ))
 pass_entry.grid(row=3, column=1)
 
 
@@ -53,6 +53,9 @@ gen_button_img = PhotoImage(file="generate_password_button.png")
 gen_pass_button = Button(image=gen_button_img)
 gen_pass_button.grid(row=3, column=2, columnspan=2)
 
+pass_button_img = PhotoImage(file="add_button_img.png")
+add_pass_button = Button(image=pass_button_img)
+add_pass_button.grid(row=4, column=1)
 
 
 
