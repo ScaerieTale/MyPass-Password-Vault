@@ -3,7 +3,7 @@ from tkinter import *
 import math
 
 BG_COLOR = "#00056f"
-FG_COLOR = "#ffa0ff"
+FG_COLOR = "#cfe0b0"
 
 
 # setup
@@ -40,22 +40,22 @@ pass_label.config(fg=FG_COLOR, bg=BG_COLOR, font=("times, serif", 18, ))
 
 
 # Entries
-web_entry = Entry(width=35, fg=BG_COLOR, font=("times, serif", 18, ))
-web_entry.grid(row=1, column=1)
-email_entry =  Entry(width=35, fg=BG_COLOR, font=("times, serif", 18, ))
-email_entry.grid(row=2, column=1)
-pass_entry = Entry(width=21, fg=BG_COLOR, font=("times, serif", 18, ))
+web_entry = Entry(width=48, fg=BG_COLOR, font=("times, serif", 18, ))
+web_entry.grid(row=1, column=1, columnspan=2)
+email_entry =  Entry(width=48, fg=BG_COLOR, font=("times, serif", 18, ))
+email_entry.grid(row=2, column=1, columnspan=2)
+pass_entry = Entry(width=30, fg=BG_COLOR, font=("times, serif", 18, ))
 pass_entry.grid(row=3, column=1)
 
 
 # Buttons
 gen_button_img = PhotoImage(file="generate_password_button.png")
-gen_pass_button = Button(image=gen_button_img)
+gen_pass_button = Button(image=gen_button_img, height=60, width=205, bg=BG_COLOR)
 gen_pass_button.grid(row=3, column=2, columnspan=2)
 
-pass_button_img = PhotoImage(file="add_button_img.png")
-add_pass_button = Button(image=pass_button_img)
-add_pass_button.grid(row=4, column=1)
+entry_button_img = PhotoImage(file="add_entry.png")
+add_entry_button = Button(image= entry_button_img, height=60, bg=BG_COLOR)
+add_entry_button.grid(row=4, column=1)
 
 
 
