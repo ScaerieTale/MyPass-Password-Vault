@@ -1,6 +1,5 @@
-from lib2to3.pgen2.token import BACKQUOTE
 from tkinter import *
-import math
+from tkinter import messagebox
 
 BG_COLOR = "#00054f"
 FG_COLOR = "#cfe0b0"
@@ -54,15 +53,19 @@ def save():
     website = web_entry.get()
     email = email_entry.get()
     password = pass_entry.get()
-    with open("data.txt", 'a') as password_file:
-        password_file.write(f"""
+
+    is_ok = messagebox.askokcancel(title=website, message=f"Is this correct?\n{email}\n{password}")
+
+    if is_ok:
+        with open("data.txt", 'a') as password_file:
+            password_file.write(f"""
         
 Website: {website}
 Username: {email}
 Password: {password}""")
-    web_entry.delete(0, END)
-    email_entry.delete(0, END)
-    pass_entry.delete(0, END)
+        web_entry.delete(0, END)
+        email_entry.delete(0, END)
+        pass_entry.delete(0, END)
 
 
 
