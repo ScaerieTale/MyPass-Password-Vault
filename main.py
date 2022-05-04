@@ -1,5 +1,8 @@
 from tkinter import *
 from tkinter import messagebox
+from random import randint
+import random
+
 
 BG_COLOR = "#00054f"
 FG_COLOR = "#cfe0b0"
@@ -71,10 +74,29 @@ Password: {password}""")
             pass_entry.delete(0, END)
 
 
+def generate():
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+
+    nr_letters = random.randint(8, 10)
+    nr_symbols = random.randint(2, 4)
+    nr_numbers = random.randint(2, 4)
+    
+    letters_list =[random.choice(letters) for _ in range(nr_letters)]
+    numbers_list = [random.choice(numbers) for _ in range(nr_numbers)]
+    symbols_list = [random.choice(symbols) for _ in range(nr_symbols)]
+
+    password_list = letters_list + numbers_list + symbols_list
+    random.shuffle(password_list)    
+    generated_password = "".join(password_list)
+    
+    pass_entry.insert(0, generated_password)
+
 
 # Buttons
 gen_button_img = PhotoImage(file="generate_password_button.png")
-gen_pass_button = Button(image=gen_button_img, height=60, width=205, bg=BG_COLOR)
+gen_pass_button = Button(image=gen_button_img, height=60, width=205, bg=BG_COLOR, command=generate)
 gen_pass_button.grid(row=3, column=2, columnspan=2)
 
 entry_button_img = PhotoImage(file="add_entry.png")
