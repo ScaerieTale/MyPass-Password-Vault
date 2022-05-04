@@ -54,18 +54,21 @@ def save():
     email = email_entry.get()
     password = pass_entry.get()
 
-    is_ok = messagebox.askokcancel(title=website, message=f"Is this correct?\n{email}\n{password}")
 
-    if is_ok:
-        with open("data.txt", 'a') as password_file:
-            password_file.write(f"""
+    if len(website) == 0 or len(password) == 0:
+        messagebox.showinfo(title="Error", message="Please don't leave any fields blank :-)")    
+    else:
+        is_ok = messagebox.askokcancel(title=website, message=f"Is this correct?\n{email}\n{password}")
+        if is_ok:
+            with open("data.txt", 'a') as password_file:
+                password_file.write(f"""
         
 Website: {website}
 Username: {email}
 Password: {password}""")
-        web_entry.delete(0, END)
-        email_entry.delete(0, END)
-        pass_entry.delete(0, END)
+            web_entry.delete(0, END)
+            email_entry.delete(0, END)
+            pass_entry.delete(0, END)
 
 
 
