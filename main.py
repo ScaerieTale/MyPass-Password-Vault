@@ -2,7 +2,7 @@ from lib2to3.pgen2.token import BACKQUOTE
 from tkinter import *
 import math
 
-BG_COLOR = "#00056f"
+BG_COLOR = "#00054f"
 FG_COLOR = "#cfe0b0"
 
 
@@ -42,10 +42,28 @@ pass_label.config(fg=FG_COLOR, bg=BG_COLOR, font=("times, serif", 18, ))
 # Entries
 web_entry = Entry(width=48, fg=BG_COLOR, font=("times, serif", 18, ))
 web_entry.grid(row=1, column=1, columnspan=2)
+web_entry.focus()
 email_entry =  Entry(width=48, fg=BG_COLOR, font=("times, serif", 18, ))
 email_entry.grid(row=2, column=1, columnspan=2)
 pass_entry = Entry(width=30, fg=BG_COLOR, font=("times, serif", 18, ))
 pass_entry.grid(row=3, column=1)
+
+
+#functions
+def save():
+    website = web_entry.get()
+    email = email_entry.get()
+    password = pass_entry.get()
+    with open("data.txt", 'a') as password_file:
+        password_file.write(f"""
+        
+Website: {website}
+Username: {email}
+Password: {password}""")
+    web_entry.delete(0, END)
+    email_entry.delete(0, END)
+    pass_entry.delete(0, END)
+
 
 
 # Buttons
@@ -54,7 +72,7 @@ gen_pass_button = Button(image=gen_button_img, height=60, width=205, bg=BG_COLOR
 gen_pass_button.grid(row=3, column=2, columnspan=2)
 
 entry_button_img = PhotoImage(file="add_entry.png")
-add_entry_button = Button(image= entry_button_img, height=60, bg=BG_COLOR)
+add_entry_button = Button(image= entry_button_img, height=60, bg=BG_COLOR, command=save)
 add_entry_button.grid(row=4, column=1)
 
 
