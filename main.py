@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from random import randint
 import random
-
+import pyperclip
 
 BG_COLOR = "#00054f"
 FG_COLOR = "#cfe0b0"
@@ -92,6 +92,7 @@ def generate():
     generated_password = "".join(password_list)
     
     pass_entry.insert(0, generated_password)
+    pyperclip.copy(generated_password)
 
 
 # Buttons
